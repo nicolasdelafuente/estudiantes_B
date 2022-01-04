@@ -14,8 +14,16 @@ class CreateEstudiantesTable extends Migration
     public function up()
     {
         Schema::create('estudiantes', function (Blueprint $table) {
-            $table->id();
+            
+            $table->engine ="InnoDB";
+            $table->bigIncrements('estudiante_id');  
+            $table->string('estudiante_nombre');
+            $table->string('estudiante_apellido'); 
+            $table->bigInteger('estudiante_carrera')->unsigned();             
             $table->timestamps();
+
+              // Relación
+            $table->foreign('estudiante_carrera')->references('carrera_id')->on('carreras')->onDelete('cascade');
         });
     }
 

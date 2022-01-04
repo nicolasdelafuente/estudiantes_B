@@ -14,7 +14,10 @@ class CreateCarrerasTable extends Migration
     public function up()
     {
         Schema::create('carreras', function (Blueprint $table) {
-            $table->id();
+            
+            $table->engine ="InnoDB";
+            $table->bigIncrements('carrera_id');  
+            $table->string('carrera_nombre');           
             $table->timestamps();
         });
     }
